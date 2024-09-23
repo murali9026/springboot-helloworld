@@ -1,9 +1,15 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
+# Use a lightweight OpenJDK 11 runtime image (upgraded from JDK 8 to 11)
+FROM openjdk:11-jre-slim
 
-ARG JAR_FILE
-ADD target/spring-boot-hello-world-1.0.0-SNAPSHOT.jar app.jar
+# Set the working directory inside the container
+WORKDIR /app
 
-ENV JAR_OPTS=""
-ENV JAVA_OPTS=""
-ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar $JAR_OPTS
+# Copy the built JAR from the target folder into the container (adjust the JAR name as needed)
+ARG JAR_FILE=target/spring-boot-hello-world-1.0.0-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+
+# Expose the port your application runs on (default is 8080, adjust if needed)
+EXPOSE 8080
+
+# Run the JAR file
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
