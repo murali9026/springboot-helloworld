@@ -12,4 +12,4 @@ COPY ${JAR_FILE} app.jar
 EXPOSE 8080
 
 # Run the JAR file
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
