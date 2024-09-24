@@ -9,7 +9,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-hello-world</name>
+	<name>springboot-helloworld</name>
 	<description>Spring Boot Hello World</description>
 
 	<parent>
@@ -153,42 +153,9 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<configuration>
-					<repository>kimb88</repository>
-					<imageName>hello-world-spring-boot</imageName>
-					<dockerDirectory>./</dockerDirectory>
-					<tag>latest</tag>
-					<buildArgs>
-						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
-				</configuration>
-			</plugin>
+			
 
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.2</version>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.9</version>
-				<configuration>
-					<destFile>${sonar.jacoco.reportPaths}</destFile>
-				</configuration>
-				<executions>
-					<execution>
-						<id>jacoco-initialize</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
